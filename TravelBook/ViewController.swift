@@ -142,7 +142,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId) // making the annotation on PIN style
             pinView?.canShowCallout = true
             pinView?.tintColor = UIColor.black
             
@@ -158,7 +158,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if selectedTitle != "" {
             
-            var requestLocation = CLLocation(latitude: annotationLatitude, longitude: annotationLongitude)
+            let requestLocation = CLLocation(latitude: annotationLatitude, longitude: annotationLongitude)
             CLGeocoder().reverseGeocodeLocation(requestLocation) { placemarks, error in
                 // closure
                 if let placemark = placemarks {
